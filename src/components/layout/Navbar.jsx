@@ -21,6 +21,19 @@ const Navbar = () => {
         <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           {isMenuOpen ? <X /> : <Menu />}
         </button>
+
+        {/* Mobile Nav */}
+        {isMenuOpen && (
+          <div className="absolute top-full left-0 right-0 bg-white border-b-4 border-black p-4">
+            <div className="flex flex-col gap-4 font-bold">
+              {['Profil', 'Pengalaman', 'Proyek', 'Kontak'].map((item) => (
+                <a key={item} href={`#${item.toLowerCase()}`} className="hover:text-blue-600 transition-colors">
+                  {item}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );

@@ -11,3 +11,7 @@
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
+html, body {
+  overflow-x: hidden;
+}

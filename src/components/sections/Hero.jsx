@@ -7,18 +7,18 @@ const Hero = () => (
         {/* show real-time date */}
         {new Date().toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
       </span>
-      <h2 className="text-5xl md:text-7xl font-black mb-6 leading-none">
+      <h2 className="text-4xl md:text-5xl lg:text-7xl font-black mb-6 leading-none break-words">
         BUILDING <br />
         <span className="text-blue-600">SMARTER</span> <br />
         APPLICATIONS.
       </h2>
       <p className="text-lg mb-8 max-w-lg leading-relaxed border-l-4 border-black pl-4">
-        Mahasiswa Informatika ISTTS & Software Engineer berbasis di Surabaya. 
-        Spesialisasi dalam aplikasi web/mobile dan passionate in AI.
+        I am a Computer Science student at ISTTS, specializing in Software Technology. 
+        I have a strong interest in artificial intelligence and am passionate about building innovative and user-friendly applications.
       </p>
       <div className="flex gap-4">
         <button className="bg-black text-white px-8 py-3 font-bold hover:bg-blue-600 transition-all active:translate-y-1">
-          Hubungi Saya
+          Get In Touch
         </button>
         <div className="flex gap-2">
           <a href="https://github.com/DallenA03" className="p-3 border-4 border-black hover:bg-yellow-300 transition-colors"><FaGithub size={24} /></a>

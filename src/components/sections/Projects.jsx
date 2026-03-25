@@ -13,12 +13,12 @@ const Projects = () => {
   return (
     <section id="proyek" className="py-20 px-4 bg-[#F0F0F0]">
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
           <div>
-            <h3 className="text-4xl font-black mb-4">SELECTED PROJECTS</h3>
-            <p className="font-bold text-gray-600 uppercase tracking-widest">Kumpulan inovasi digital terbaik</p>
+            <h3 className="text-3xl md:text-4xl font-black mb-4 break-words">SELECTED PROJECTS</h3>
+            <p className="font-bold text-gray-600 uppercase tracking-widest text-sm md:text-base">Here are some of my best projects</p>
           </div>
-          <div className="flex gap-2 bg-white border-4 border-black p-1">
+          <div className="flex flex-wrap gap-2 bg-white border-4 border-black p-1">
             {['all', 'web', 'mobile'].map((tab) => (
               <button 
                 key={tab}

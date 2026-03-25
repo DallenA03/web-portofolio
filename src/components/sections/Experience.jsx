@@ -4,8 +4,8 @@ import PixelCard from '../ui/PixelCard';
 const Experience = () => (
   <section id="pengalaman" className="py-20 bg-white px-4 border-b-4 border-black">
     <div className="max-w-6xl mx-auto">
-      <h3 className="text-4xl font-black mb-12 flex items-center gap-4">
-        <Award size={40} /> PENGALAMAN & ORGANISASI
+      <h3 className="text-3xl md:text-4xl font-black mb-12 flex items-center gap-4 break-words">
+        <Award className="shrink-0" size={40} /> EXPERIENCE & ORGANIZATION
       </h3>
       <div className="grid gap-8">
         <PixelCard className="flex flex-col md:flex-row justify-between gap-4 border-l-8 border-l-blue-600">
