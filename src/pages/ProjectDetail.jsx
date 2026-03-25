@@ -1,16 +1,31 @@
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight, ArrowRight } from 'lucide-react';
-import { projects } from '../data/data';
+import { useEffect } from 'react';
+import { useProjects } from '../hooks/useSupabase';
 
 const ProjectDetail = () => {
+   const { projects, fetchProjects, loading } = useProjects();
   const { id } = useParams();
+
+  useEffect(() => {
+      if (!projects.length) {
+         fetchProjects();
+      }
+   }, [fetchProjects, projects.length]);
   
-  const currentIndex = projects.findIndex(p => p.id === id);
+  const currentIndex = projects.findIndex(p => p.id === parseInt(id, 10));
   const project = projects[currentIndex];
+
+  if (loading || !projects.length) return (
+    <div className="flex h-screen bg-[#F0F0F0] text-black font-mono">
+      <div className="flex-1 p-20 flex flex-col items-center justify-center font-black text-4xl">
+        LOADING...
+      </div>
+    </div>
+  );
 
   if (!project) return (
     <div className="flex h-screen bg-[#F0F0F0] text-black font-mono">
-      <Sidebar />
       <div className="flex-1 p-20 flex flex-col items-center justify-center font-black text-4xl">
         PROJECT NOT FOUND.
         <Link to="/portfolio" className="mt-8 text-lg bg-black text-white px-8 py-4">GO BACK</Link>
@@ -39,8 +54,8 @@ const ProjectDetail = () => {
            <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-start mb-16">
               <span className="text-7xl md:text-8xl font-black text-black leading-none">{displayNum}</span>
               <div className="flex flex-col gap-4 mt-2">
-                 <h1 className="text-4xl md:text-5xl font-black tracking-tight">{project.title}</h1>
-                 <p className="text-lg text-gray-700 max-w-2xl font-medium">{project.desc}</p>
+                 <h1 className="text-4xl md:text-5xl font-black tracking-tight">{project.project_name}</h1>
+                 <p className="text-lg text-gray-700 max-w-2xl font-medium">{project.description}</p>
               </div>
            </div>
 
@@ -48,7 +63,7 @@ const ProjectDetail = () => {
            <div className="flex flex-col lg:flex-row gap-4 mb-20">
               <div className={`flex-1 min-h-[400px] border-2 border-black ${project.color} flex items-center justify-center relative p-8`}>
                  <div className="absolute inset-4 border border-dashed border-white opacity-50 pointer-events-none" />
-                 <span className="font-black text-2xl bg-white border-2 border-black px-6 py-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] uppercase">{project.title} DEMO PREVIEW</span>
+                 <span className="font-black text-2xl bg-white border-2 border-black px-6 py-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] uppercase">{project.project_name} DEMO PREVIEW</span>
               </div>
               <div className="flex lg:flex-col gap-4 w-full lg:w-48 overflow-x-auto lg:overflow-visible">
                  {[1, 2, 3, 4].map((num) => (
@@ -64,8 +79,8 @@ const ProjectDetail = () => {
              <div>
                 <h3 className="text-xs font-bold tracking-[0.3em] uppercase mb-6 text-gray-500">T E C H  S T A C K</h3>
                 <div className="flex flex-wrap gap-2">
-                   {project.tags.map(t => (
-                     <span key={t} className="px-5 py-2 border border-black text-sm bg-transparent font-medium">{t}</span>
+                   {project.project_tech_stack?.map(t => (
+                     <span key={t.tech_stack.id} className="px-5 py-2 border border-black text-sm bg-transparent font-medium">{t.tech_stack.tech_stack_name}</span>
                    ))}
                 </div>
              </div>

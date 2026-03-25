@@ -26,7 +26,11 @@ export const projects = [
       "Mengonversi gambar berisi teks menjadi font disleksia-friendly secara real-time",
       "Mendukung sistem modifikasi warna kontras untuk mengurangi stres visual",
       "Terintegrasi dengan optical character recognition (OCR) yang bertenaga AI",
-      "Desain aksesibilitas tinggi standar WAD (Web Accessibility Directive)"
+      "Desain aksesibilitas tinggi standar WAD (Web Accessibility Directive)",
+
+      "Engineered a cross-platform gamified learning application for K-12 students using Flutter, delivering a high-performance and seamless user experience.",
+      "Architected a robust backend using Node.js, Firebase and MySQL, integrating Gemini AI for intelligent features and Midtrans for secure, automated subscription payments.",
+      "Optimized application scalability by implementing the BLoC pattern and Provider for state management, ensuring a maintainable, testable, and clean codebase.",
     ]
   },
   {

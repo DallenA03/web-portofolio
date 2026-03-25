@@ -42,13 +42,19 @@ const ProjectModal = ({ mode, data, techStacks, categories, onClose, onSave, sav
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
+
     setUploading(true);
+
     const fileName = `projects/${Date.now()}_${file.name.replace(/\s/g, '_')}`;
     const { data: uploaded, error } = await supabase.storage.from('portfolio').upload(fileName, file, { upsert: true });
+    
     if (!error) {
       const { data: urlData } = supabase.storage.from('portfolio').getPublicUrl(fileName);
       set('img_link', urlData.publicUrl);
+    } else {
+      alert('Image upload failed. Please try again.');
     }
+
     setUploading(false);
   };
 

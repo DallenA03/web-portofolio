@@ -1,16 +1,31 @@
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
-import { experiences } from '../data/data';
+import { useEffect } from 'react';
+import { useExperiences } from '../hooks/useSupabase';
 
 const ExperienceDetail = () => {
+  const { experiences, fetchExperiences, loading } = useExperiences();
   const { id } = useParams();
-  
-  const currentIndex = experiences.findIndex(e => e.id === id);
+
+  useEffect(() => {
+    if (!experiences.length) {
+      fetchExperiences();
+    }
+  }, [fetchExperiences, experiences.length]);
+
+  const currentIndex = experiences.findIndex(e => e.id === parseInt(id, 10));
   const exp = experiences[currentIndex];
+
+  if (loading || !experiences.length) return (
+    <div className="flex h-screen bg-[#F0F0F0] text-black font-mono">
+      <div className="flex-1 p-20 flex flex-col items-center justify-center font-black text-4xl">
+        LOADING...
+      </div>
+    </div>
+  );
 
   if (!exp) return (
     <div className="flex h-screen bg-[#F0F0F0] text-black font-mono">
-      <Sidebar />
       <div className="flex-1 p-20 flex flex-col items-center justify-center font-black text-4xl">
         EXPERIENCE NOT FOUND.
         <Link to="/portfolio" className="mt-8 text-lg bg-black text-white px-8 py-4">GO BACK</Link>
@@ -52,8 +67,8 @@ const ExperienceDetail = () => {
              <div>
                 <h3 className="text-xs font-bold tracking-[0.3em] uppercase mb-6 text-gray-500">S K I L L S & T O O L S</h3>
                 <div className="flex flex-wrap gap-2">
-                   {exp.tags.map(t => (
-                     <span key={t} className="px-5 py-2 border border-black text-sm bg-transparent font-medium">{t}</span>
+                   {exp.experience_tech_stack?.map(t => (
+                     <span key={t.tech_stack.id} className="px-5 py-2 border border-black text-sm bg-transparent font-medium">{t.tech_stack.tech_stack_name}</span>
                    ))}
                 </div>
              </div>
