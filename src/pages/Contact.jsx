@@ -108,7 +108,7 @@ const Contact = () => {
             className="flex flex-col sm:flex-row gap-6 justify-center w-full sm:w-auto"
           >
             <a
-              href="mailto:hello@francescodallen.com"
+              href="mailto:[EMAIL_ADDRESS]"
               className="flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white border-2 border-black font-black text-sm tracking-widest hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-blue-400 transition-all w-full sm:w-auto"
             >
               SEND AN EMAIL <ArrowUpRight size={18} strokeWidth={3} />
