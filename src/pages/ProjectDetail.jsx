@@ -118,14 +118,14 @@ const ProjectDetail = () => {
                {prevProject ? (
                  <Link to={`/project/${prevProject.id}`} className="flex flex-col items-start hover:-translate-x-2 transition-transform text-black gap-2">
                     <span className="text-xs font-bold tracking-widest uppercase flex items-center gap-1"><ArrowLeft size={16} /> PREV</span>
-                    <span className="font-bold text-lg">{prevProject.title}</span>
+                    <span className="font-bold text-lg">{prevProject.project_name}</span>
                  </Link>
                ) : <div />}
                
                {nextProject ? (
                  <Link to={`/project/${nextProject.id}`} className="flex flex-col items-end hover:translate-x-2 transition-transform text-black gap-2">
                     <span className="text-xs font-bold tracking-widest uppercase flex items-center gap-1">NEXT <ArrowRight size={16} /></span>
-                    <span className="font-bold text-lg">{nextProject.title}</span>
+                    <span className="font-bold text-lg">{nextProject.project_name}</span>
                  </Link>
                ) : <div />}
            </div>

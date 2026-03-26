@@ -15,6 +15,7 @@ const Navbar = () => {
           <Link to="/" className="hover:text-blue-600 transition-colors">Home</Link>
           <a href="/portfolio#pengalaman" className="hover:text-blue-600 transition-colors">Experience</a>
           <a href="/portfolio#proyek" className="hover:text-blue-600 transition-colors">Projects</a>
+          <a href="/portfolio#coding-activity" className="hover:text-blue-600 transition-colors">Coding Stats</a>
           <Link to="/contact" className="hover:text-blue-600 transition-colors">Contact</Link>
         </div>
 
@@ -29,6 +30,7 @@ const Navbar = () => {
               <Link to="/" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600 transition-colors">Home</Link>
               <a href="/portfolio#pengalaman" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600 transition-colors">Experience</a>
               <a href="/portfolio#proyek" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600 transition-colors">Projects</a>
+              <a href="/portfolio#coding-activity" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600 transition-colors">Coding Stats</a>
               <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600 transition-colors">Contact</Link>
             </div>
           </div>

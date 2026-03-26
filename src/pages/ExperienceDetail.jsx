@@ -38,6 +38,16 @@ const ExperienceDetail = () => {
 
   const displayNum = String(currentIndex + 1).padStart(2, '0');
 
+  // view date format like "2023 - 2024"
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('id-ID', {
+      year: 'numeric',
+      month: 'short',
+    });
+  };
+
   return (
     <div className="flex flex-col md:flex-row h-screen bg-[#F0F0F0] text-black font-mono selection:bg-yellow-300 overflow-hidden">
       <main className="flex-1 overflow-y-auto relative p-6 md:p-16 flex flex-col items-center">
@@ -54,11 +64,11 @@ const ExperienceDetail = () => {
            <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-start mb-20">
               <span className="text-7xl md:text-8xl font-black text-black leading-none">{displayNum}</span>
               <div className="flex flex-col gap-4 mt-2">
-                 <h1 className="text-4xl md:text-5xl font-black tracking-tight">{exp.title}</h1>
+                 <h1 className="text-4xl md:text-5xl font-black tracking-tight">{exp.experience_name}</h1>
                  <p className="text-lg text-gray-600 font-bold uppercase tracking-widest flex flex-wrap gap-2">
-                    <span className="text-black">{exp.company}</span> • <span>{exp.period}</span>
+                    <span className="text-black font-semibold">{exp.company_name}</span> • <span className="italic">{formatDate(exp.start_periode)} - {exp.current_work ? "PRESENT" : formatDate(exp.end_periode)}</span>
                  </p>
-                 <p className="text-lg text-gray-700 max-w-2xl font-medium mt-4 border-l-4 border-black pl-4">{exp.desc}</p>
+                 <p className="text-lg text-gray-700 max-w-2xl font-medium mt-4 border-l-4 border-black pl-4">{exp.description}</p>
               </div>
            </div>
 
@@ -101,14 +111,14 @@ const ExperienceDetail = () => {
                {prevExp ? (
                  <Link to={`/experience/${prevExp.id}`} className="flex flex-col items-start hover:-translate-x-2 transition-transform text-black gap-2">
                     <span className="text-xs font-bold tracking-widest uppercase flex items-center gap-1"><ArrowLeft size={16} /> PREV</span>
-                    <span className="font-bold text-lg">{prevExp.title}</span>
+                    <span className="font-bold text-lg">{prevExp.experience_name}</span>
                  </Link>
                ) : <div />}
                
                {nextExp ? (
                  <Link to={`/experience/${nextExp.id}`} className="flex flex-col items-end hover:translate-x-2 transition-transform text-black gap-2">
                     <span className="text-xs font-bold tracking-widest uppercase flex items-center gap-1">NEXT <ArrowRight size={16} /></span>
-                    <span className="font-bold text-lg">{nextExp.title}</span>
+                    <span className="font-bold text-lg">{nextExp.experience_name}</span>
                  </Link>
                ) : <div />}
            </div>

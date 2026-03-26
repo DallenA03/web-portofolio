@@ -4,6 +4,8 @@ import Marquee from "../components/sections/Marquee";
 import Experience from "../components/sections/Experience";
 import Projects from "../components/sections/Projects";
 import Skills from "../components/sections/Skills";
+import Wakatime from "../components/sections/Wakatime";
+import GithubStats from "../components/sections/GithubStats";
 import { useAuth } from "../hooks/useAuth";
 import { Link } from "react-router-dom";
 import { ShieldCheck, LogIn } from "lucide-react";
@@ -43,6 +45,8 @@ const Portfolio = () => {
       <Experience />
       <Projects />
       <Skills />
+      <Wakatime />
+      {/* <GithubStats /> */}
       <Footer />
     </div>
   );
